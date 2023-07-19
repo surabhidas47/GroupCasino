@@ -10,15 +10,17 @@ import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
+import java.io.IOException;
+
+import java.io.IOException;
 
 /**
  * Created by leon on 7/21/2020.
  */
-public class Casino implements Runnable {
+public class Casino {
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
-    @Override
-    public void run() {
+    public void run() throws IOException{
         String arcadeDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
@@ -55,25 +57,17 @@ public class Casino implements Runnable {
     }
 
     private String getArcadeDashboardInput() {
-        return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Arcade Dashboard!")
-                .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ create-account ], [ select-game ]")
-                .toString());
+        return console.getStringInput(
+                "Welcome to the Trillium Casino! \n\n" +
+                "Select an option: \n" +
+                "[CREATE NEW ACCOUNT]  [SELECT GAME]  [CASHIER]  [EXIT]");
     }
 
     private String getGameSelectionInput() {
-        return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Game Selection Dashboard!")
-                .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ NUMBERGUESS ]")
-                .toString());
+        return console.getStringInput(
+                "Select any of the following games: \n" +
+                "[SLOTS] [ROULETTE] [COIN FLIP] [NUMBER GUESS] [21] [ROCK PAPER SCISSORS]");
     }
 
-    private void play(Object gameObject, Object playerObject) {
-        GameInterface game = (GameInterface)gameObject;
-        PlayerInterface player = (PlayerInterface)playerObject;
-        game.add(player);
-        game.run();
-    }
+
 }
