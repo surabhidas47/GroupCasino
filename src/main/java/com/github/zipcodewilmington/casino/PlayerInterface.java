@@ -7,5 +7,7 @@ package com.github.zipcodewilmington.casino;
  * All players are capable of `play`ing a game.
  */
 public interface PlayerInterface {
+CasinoAccount getArcadeAccount();
 
+<SomeReturnType> SomeReturnType play();
 }

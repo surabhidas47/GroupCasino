@@ -5,9 +5,9 @@ package com.github.zipcodewilmington.casino;
  */
 public interface GameInterface extends Runnable {
 
-    void add(Player player); //add player to game
+    void add(PlayerInterface player); //add player to game
 
-    void remove(Player player);// remove player from game
+    void remove(PlayerInterface player);// remove player from game
 
     String displayInstructions(); // display instruction for game
 

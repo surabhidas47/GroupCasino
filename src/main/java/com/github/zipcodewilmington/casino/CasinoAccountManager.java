@@ -18,7 +18,7 @@ import java.util.Map;
 public class CasinoAccountManager {
 
     private HashMap<String, CasinoAccount> accounts;
-    private Path file = Paths.get("accounts.txt"); //creates object used to locate file in file system
+    private Path file = Paths.get("/Users/joe/Desktop/local projects/GroupCasino/src/main/java/com/github/zipcodewilmington/casino/games/accounts.txt"); //creates object used to locate file in file system
 
     public CasinoAccountManager() throws IOException {
         this.accounts = new HashMap<>(); // hashmap containing username as key, and account info as value
