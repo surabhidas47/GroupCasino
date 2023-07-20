@@ -1,5 +1,7 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.Casino;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,13 +15,14 @@ public class SlotsGame {
     static String[] wordList = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
     SlotsPlayer sp = new SlotsPlayer();
 
-    //just temp to check if code works
+//    just temp to check if code works
     public static void main(String[] args) {
         run();
     }
 
     public static void run() {
         int numberOfTries=0;
+        boolean hasMatch =false;
 
         displayInstructions();
 
@@ -28,13 +31,21 @@ public class SlotsGame {
             String[] wordList = spin();
             printResult(wordList);
             numberOfTries++;
-            System.out.println("Press Enter to spin again!");
+
+            if(checkMatch(wordList)){
+                hasMatch =true;
+                break;
+            }
+
+            if (numberOfTries<3) {
+                System.out.println("Press Enter to spin again!");
+            }
+
 
         }
         while (numberOfTries<3);
 
-
-        if (checkMatch(wordList)){
+        if (hasMatch){
             updateAccount();
         } else {
             quit();
@@ -45,12 +56,13 @@ public class SlotsGame {
 
 
     public static void displayInstructions(){
-        System.out.println(" ***************************************");
-        System.out.println(" ---------------------------------------");
-        System.out.println(" { Welcome to the Slot Machine Game!!! } ");
-        System.out.println(" ---------------------------------------");
-        System.out.println(" ***************************************\n");
-        System.out.println("     Type 'PULL' to crank the lever!\n ");
+        System.out.println("      ***************************************");
+        System.out.println("      ---------------------------------------");
+        System.out.println("      { Welcome to the Slot Machine Game!!! } ");
+        System.out.println("      ---------------------------------------");
+        System.out.println("      ***************************************\n");
+        System.out.println("You get three tries! If you win you double your bet!!\n");
+        System.out.println("         Type 'PULL' to crank the lever!\n ");
         System.out.print(">>>   ");
 
 
@@ -58,9 +70,6 @@ public class SlotsGame {
 
     public static String[] spin() {
         Random random = new Random();
-//        String[] wordList = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
-
-
         for (int i = 0; i < wordList.length; i++) {
             int randomIndex = random.nextInt(wordList.length);
             wordList[i] = wordList[randomIndex];
@@ -71,6 +80,7 @@ public class SlotsGame {
 
     public static void printResult(String[] wordList) {
         System.out.println(wordList[0] + " " + wordList[1] + " " + wordList[2]);
+
 
         if (checkMatch(wordList)) {
             System.out.println("Congratulations! You have a match!\n");
@@ -98,6 +108,7 @@ public class SlotsGame {
         if (choice == 1) {
             run();
         } else if (choice == 2){
+             //back to main menu when i comment out this classes main method
 
         }
 
