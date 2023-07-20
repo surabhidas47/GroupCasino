@@ -2,15 +2,17 @@ package com.github.zipcodewilmington.casino.games.rockpaperscissors;
 
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.Player;
+import com.github.zipcodewilmington.casino.PlayerInterface;
 
 public class RpsGame implements GameInterface {
+
     @Override
-    public void add(Player player) {
+    public void add(PlayerInterface player) {
 
     }
 
     @Override
-    public void remove(Player player) {
+    public void remove(PlayerInterface player) {
 
     }
 

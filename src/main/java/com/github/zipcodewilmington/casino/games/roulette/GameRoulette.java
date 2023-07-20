@@ -8,26 +8,28 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 import java.util.Random;
 import java.util.Scanner;
 
-public class GameRoulette  {
-    public static void main(String[] args) {
-        GameRoulette game = new GameRoulette();
-        game.run();
-    }
+public class GameRoulette {
+    //    public static void main(String[] args) {
+//        GameRoulette game = new GameRoulette();
+//        game.run();
+//    }
     Scanner console = new Scanner(System.in);
     Random rand = new Random();
 
     int bank = 100;
-    int max = bank;
-    int spins = 0;
-   public void run(){
+//    int max = bank;
+//    int spins = 0;
+
+    public void run() {
         play();
         int bet = getBet();
-       int choice = getChoice("What would you like to bet on?", "1. odd", "2. even");
-       int spin = getSpin();
-       compareResults(bet, choice, spin);
-         spins++;
-         quit();
-   }
+        int choice = getChoice("What would you like to bet on?", "1. odd", "2. even");
+        int spin = getSpin();
+        compareResults(bet, choice, spin);
+//        spins++;
+        quit();
+    }
+
     public void play() {
         System.out.println("Welcome to Roulette!");
 
@@ -37,7 +39,6 @@ public class GameRoulette  {
 //            System.out.println("How much would you like to bet?");
 //            bet = console.nextInt();
 //        }
-
 
 
     }
@@ -74,10 +75,10 @@ public class GameRoulette  {
                 bank = bank - bet;
                 System.out.println("You now have $" + bank + " in your bank.");
             }
-}
+        }
     }
 
-    private int getSpin() {
+    int getSpin() {
         int spin = rand.nextInt(38);
         return spin;
     }
@@ -88,6 +89,10 @@ public class GameRoulette  {
         System.out.println(x2);
 
         int choice = console.nextInt();
+        if (choice != 2 && choice != 1) {
+            System.out.println("Please enter a valid choice. 1 or 2.");
+            choice = console.nextInt();
+        }
         return choice;
     }
 
@@ -97,17 +102,34 @@ public class GameRoulette  {
 //            System.out.println("How much would you like to bet?");
 //            bet = console.nextInt();
 
-    private int getBet() {
-        System.out.println("How much would you like to bet?");
+    int getBet() {
+        System.out.println("You have $" + bank + " in your bank.\n" +
+                "The maximum amount you can bet is $" + bank + ".\n" +
+                " How much would you like to bet?");
         int bet = console.nextInt();
+        if (bet > bank) {
+            System.out.println("You cannot bet more than $" + bank + ".");
+            System.out.println("How much would you like to bet?");
+            bet = console.nextInt();
+        }
         return bet;
     }
+
     private void quit() {
         System.out.println("Thank you for playing! Press 1 to replay or 2 to return to the casino lobby.");
+
         int choice = console.nextInt();
         if (choice == 1) {
             run();
         } else if (choice == 2) {
+            //Casino casino = new Casino();
+            //casino.run();
+        }
+    }
+    public void broke(){
+        if (bank <= 0){
+            System.out.println("You are out of money. Please return to the casino lobby.");
+
             //Casino casino = new Casino();
             //casino.run();
         }
