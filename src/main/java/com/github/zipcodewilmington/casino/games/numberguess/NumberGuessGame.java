@@ -8,9 +8,11 @@ public class NumberGuessGame {
         private Player player;
         private Scanner scanner;
         private int targetNumber;
+         private int numberOfTries;
 
         public NumberGuessGame() {
             this.scanner = new Scanner(System.in);
+            this.numberOfTries = 3;
         }
 
         public void add(Player player) {
@@ -22,16 +24,22 @@ public class NumberGuessGame {
             boolean playAgain = true;
             while (playAgain) {
                 targetNumber = (int) (Math.random() * 10) + 1; // Generate a random number between 1 and 10
+                numberOfTries = 3;
                 boolean isWinner = false;
 
-                while (!isWinner) {
+                while (!isWinner && numberOfTries > 0) {
                     int userGuess = getUserGuess();
                     isWinner = checkWinner(userGuess);
+                    numberOfTries--;
                     if (isWinner) {
                         System.out.println("Congratulations!!!! You LUCKILY guessed the right number: " + targetNumber);
-                    } else {
+                    } else if (numberOfTries > 0) {
                         System.out.println("Better Luck Next Time!");
                     }
+                    else {
+                        System.out.println("Out of attempts! The number was " + targetNumber);
+                    }
+
                 }
 
                 playAgain = playAgain();
