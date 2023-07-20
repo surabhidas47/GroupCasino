@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -43,11 +44,11 @@ public class CasinoAccountManager {
         return null; // else return null
     }
 
-    public CasinoAccount createAccount(String username, String password) {
+    public CasinoAccount createAccount(String username, String password, int balance) {
         if (this.accounts.containsKey(username)) { // if username already exists in accounts, return null
             return null;
         } else {
-            CasinoAccount newAccount = new CasinoAccount(username, password, 500);
+            CasinoAccount newAccount = new CasinoAccount(username, password, balance);
             this.accounts.put(username, newAccount); //store username as key and the entire new account as value in accounts hashmap
             return newAccount; // else if account doesn't exist, return newly created account
         }
@@ -57,9 +58,13 @@ public class CasinoAccountManager {
         this.accounts.put(account.getUserName(), account); // add new account with username as key to the accounts hashmap
     }
 
+    public Set<String> getAccountUsername() {
+        return accounts.keySet(); // return a set of usernames (keys)
+    }
+
     public void updateAccounts() throws IOException {
         String info = ""; // adding updated balance info to existing account
-        for(HashMap.Entry<String, CasinoAccount> entry : this.accounts.entrySet()) { //this is a enhanced for loop
+        for(HashMap.Entry<String, CasinoAccount> entry : this.accounts.entrySet()) { //this is an enhanced for loop
             //update each account in accounts with current balance information and store in "info"
             info += entry.getValue().getUserName() + " " + entry.getValue().getPassword() + " " + entry.getValue().getBalance() + "\n";
         }
