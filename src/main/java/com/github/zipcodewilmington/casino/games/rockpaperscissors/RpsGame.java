@@ -6,13 +6,15 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 
 public class RpsGame implements GameInterface {
 
+
+
     @Override
-    public void add(PlayerInterface player) {
+    public void add(Player player) {
 
     }
 
     @Override
-    public void remove(PlayerInterface player) {
+    public void remove(Player player) {
 
     }
 
