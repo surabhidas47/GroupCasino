@@ -9,7 +9,7 @@ public interface GameInterface extends Runnable {
 
     void remove(Player player);// remove player from game
 
-    String displayInstructions(); // display instruction for game
+    void displayInstructions(); // display instruction for game
 
     Boolean checkWinner(); // compare to see if user won/lost
 

@@ -1,2 +1,3 @@
+pebbles password 1000
 angela apple 100
 bob pw 2000

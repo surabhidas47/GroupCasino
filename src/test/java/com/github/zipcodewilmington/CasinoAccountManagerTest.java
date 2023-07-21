@@ -20,13 +20,13 @@ public class CasinoAccountManagerTest {
         Assert.assertEquals(actual, account);
     }
 
-//    @Test
-//    public void testCreateAccount() throws IOException {
-//        CasinoAccountManager cam = new CasinoAccountManager();
-//        cam.createAccount("Angela", "password", 1000);
-//        CasinoAccount actual = cam.getAccount("Angela", "password");
-//
-//        Assert.assertEquals(actual, account);
-//    }
+    @Test
+    public void testCreateAccount() throws IOException {
+        CasinoAccountManager cam = new CasinoAccountManager();
+        CasinoAccount expected = cam.createAccount("Angela", "password", 1000);
+        CasinoAccount actual = cam.getAccount("Angela", "password");
+
+        Assert.assertEquals(expected, actual);
+    }
 
 }

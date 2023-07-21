@@ -12,8 +12,5 @@ public abstract class Player {
         return this.account;
     }
 
-    public String getUsername() { // return/access username
-        return this.account.getUserName();
-    }
 
 }

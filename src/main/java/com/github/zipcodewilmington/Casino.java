@@ -21,13 +21,6 @@ import java.io.IOException;
  */
 public class Casino {
 
-    // wordguess wg1 = new wordguess
-
-    // game object 2
-
-    // game object 3
-
-    // player
     private final IOConsole console = new IOConsole(AnsiColor.CYAN);
 
     public void run() throws IOException {
@@ -58,25 +51,31 @@ public class Casino {
                 case "SELECT GAME":
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
                     switch (gameSelectionInput) {
-                        case "ROCK PAPER SCISSORS":
+                        case "ROCK PAPER SCISSOR":
                         case "NUMBER GUESS":
-                            if (gameSelectionInput.equals("ROCK PAPER SCISSORS")) {
-                                new RpsGame().run();
-                            } else {
-                                new NumberGuessGame().run();
-                            }
-                            casinoAccountManager.updateAccounts();
-                            break;
-
                         case "SLOTS":
                         case "ROULETTE":
-                            if (gameSelectionInput.equals("SLOTS")) {
+                            // log in user account
+                            CasinoAccount userAccount = promptLogin(casinoAccountManager);
+                            if(userAccount == null) {
+                                console.println("No account found with that username and password. " +
+                                        "Redirecting to the main menu.");
+                                break;
+                            }
+
+                            if (gameSelectionInput.equals("ROCK PAPER SCISSOR")) {
+                                new RpsGame().run();
+                            } else if(gameSelectionInput.equals("NUMBER GUESS")){
+                                new NumberGuessGame().run();
+                            } else if (gameSelectionInput.equals("SLOTS")) {
                                 new SlotsGame().run();
                             } else {
                                 new GameRoulette().run();
                             }
+
                             casinoAccountManager.updateAccounts();
                             break;
+
 
                     }
 
@@ -95,8 +94,14 @@ public class Casino {
     private String getGameSelectionInput() {
         return console.getStringInput(
                 "Select any of the following games: \n" +
-                        "[SLOTS] [ROULETTE] [COIN FLIP] [NUMBER GUESS] [21] [ROCK PAPER SCISSORS] \n" +
+                        "[SLOTS] [ROULETTE] [COIN FLIP] [NUMBER GUESS] [21] [ROCK PAPER SCISSOR] \n" +
                         ">> ");
+    }
+
+    private CasinoAccount promptLogin(CasinoAccountManager cam) {
+        String userName = console.getStringInput("Enter your username: ");
+        String password = console.getStringInput("Enter your password: ");
+        return cam.getAccount(userName, password);
     }
 
     private void welcome() {

@@ -1,6 +1,10 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.utils.AnsiColor;
+import com.github.zipcodewilmington.utils.IOConsole;
+
 import java.util.Random;
+import java.util.Scanner;
 
 import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.promptUserToStart;
 
@@ -8,8 +12,8 @@ import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.prompt
      * Created by leon on 7/21/2020.
      */
     public class SlotsGame {
-
-        static String[] wordList = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
+        Scanner console = new Scanner(System.in);
+        String[] wordList = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
         SlotsPlayer sp = new SlotsPlayer();
 
         //just temp to check if code works
@@ -17,7 +21,7 @@ import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.prompt
 //            run();
 //        }
 
-        public static void run() {
+        public  void run() {
             int numberOfTries=0;
 
             displayInstructions();
@@ -43,7 +47,7 @@ import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.prompt
         }
 
 
-        public static void displayInstructions(){
+        public  void displayInstructions(){
             System.out.println(" ***************************************");
             System.out.println(" ---------------------------------------");
             System.out.println(" { Welcome to the Slot Machine Game!!! } ");
@@ -55,7 +59,7 @@ import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.prompt
 
         }
 
-        public static String[] spin() {
+        public  String[] spin() {
             Random random = new Random();
 //        String[] wordList = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
 
@@ -68,7 +72,7 @@ import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.prompt
             return wordList;
         }
 
-        public static void printResult(String[] wordList) {
+        public  void printResult(String[] wordList) {
             System.out.println(wordList[0] + " " + wordList[1] + " " + wordList[2]);
 
             if (checkMatch(wordList)) {
@@ -79,18 +83,22 @@ import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.prompt
         }
 
 
-        public static boolean checkMatch(String[] wordList) {
+        public boolean checkMatch(String[] wordList) {
 
             return wordList[0].equals(wordList[1]) && wordList[0].equals(wordList[2]);
         }
 
-        public static void updateAccount(){
+        public void updateAccount(){
             System.out.println("BLOOOP.\n");
 
         }
 
-        public static void quit(){
-            System.out.println("QUIT.\n");
+        public  void quit(){
+            System.out.println("Thank you for playing! Press 1 to replay or 2 to exit game");
+            int choice = console.nextInt();
+            if(choice==1) {
+                run();
+            }
 
         }
 
