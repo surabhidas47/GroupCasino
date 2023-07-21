@@ -5,7 +5,7 @@ package com.github.zipcodewilmington.casino;
  * `ArcadeAccount` is registered for each user of the `Arcade`.
  * The `ArcadeAccount` is used to log into the system to select a `Game` to play.
  */
-public class CasinoAccount {
+public class CasinoAccount implements Account{
 
     private String userName;
     private String password;
@@ -25,7 +25,7 @@ public class CasinoAccount {
         return password;
     }
 
-    public int getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 

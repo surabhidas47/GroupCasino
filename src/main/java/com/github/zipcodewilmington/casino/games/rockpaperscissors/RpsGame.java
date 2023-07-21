@@ -17,6 +17,11 @@ public class RpsGame implements GameInterface {
     String[] choices = {"ROCK", "PAPER", "SCISSOR"};
 
     private final IOConsole console = new IOConsole(AnsiColor.CYAN);
+
+    public RpsGame(RpsPlayer player) {
+        this.player = player;
+    }
+
     @Override
     public void run() {
 
@@ -74,6 +79,7 @@ public class RpsGame implements GameInterface {
             console.println("You won!");
         } else {
             console.println("You lost...");
+            player.getAccount().withdrawBalance(50);
         }
         console.println("You chose: " + userChoice + " and we chose: " + computerChoice);
     }

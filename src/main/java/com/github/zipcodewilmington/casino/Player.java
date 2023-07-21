@@ -1,14 +1,15 @@
 package com.github.zipcodewilmington.casino;
 
+
 public abstract class Player {
 
-    protected CasinoAccount account;
+    protected Account account;
 
-    public Player(CasinoAccount account) {
+    public Player(Account account) {
         this.account = account;
     }
 
-    public CasinoAccount getAccount() { // return/access account with this method
+    public Account getAccount() { // return/access account with this method
         return this.account;
     }
 

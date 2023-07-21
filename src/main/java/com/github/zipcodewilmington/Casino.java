@@ -2,11 +2,11 @@ package com.github.zipcodewilmington;
 
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
-import com.github.zipcodewilmington.casino.GameInterface;
-import com.github.zipcodewilmington.casino.PlayerInterface;
+
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsGame;
+import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsPlayer;
 import com.github.zipcodewilmington.casino.games.roulette.GameRoulette;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
@@ -64,7 +64,8 @@ public class Casino {
                             }
 
                             if (gameSelectionInput.equals("ROCK PAPER SCISSOR")) {
-                                new RpsGame().run();
+                                RpsPlayer player = new RpsPlayer(userAccount);
+                                new RpsGame(player).run();
                             } else if(gameSelectionInput.equals("NUMBER GUESS")){
                                 new NumberGuessGame().run();
                             } else if (gameSelectionInput.equals("SLOTS")) {
