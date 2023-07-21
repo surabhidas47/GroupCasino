@@ -113,6 +113,7 @@ public class RpsGame implements GameInterface {
     public Boolean checkWinner() {
         return null;
     }
+
     @Override
     public void quit() {
 
