@@ -57,6 +57,34 @@ class GameRouletteTest {
 //        then
         assertEquals(expected,actual);
     }
+    @Test
+    void testCompareResults3(){
+//        Given
+        GameRoulette game = new GameRoulette();
+        int bet = 50;
+        int choice = 1;
+        int spin = 2;
+        int expected = 50;
+//        When
+        game.compareResults(bet, choice, spin);
+        int actual = game.bank;
+//        then
+        assertEquals(actual,expected);
+    }
+    @Test
+    void testCompareResults4(){
+//        Given
+        GameRoulette game = new GameRoulette();
+        int bet = 100;
+        int choice = 1;
+        int spin = 1;
+        int expected = 100;
+//        when
+        game.compareResults(bet, choice, spin);
+        int actual = game.bank;
+//        then
+        assertNotEquals(expected,actual);
+    }
 
 
 }
