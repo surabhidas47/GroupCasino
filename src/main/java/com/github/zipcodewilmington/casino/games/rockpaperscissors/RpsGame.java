@@ -14,7 +14,7 @@ public class RpsGame implements GameInterface {
     String userChoice;
     String computerChoice;
     String playAgain;
-    String[] choices = {"ROCK", "PAPER", "SCISSOR"};
+    String[] choices = {"R", "P", "S"};
 
     private final IOConsole console = new IOConsole(AnsiColor.CYAN);
 
@@ -49,43 +49,54 @@ public class RpsGame implements GameInterface {
 
     @Override
     public void displayInstructions() {
-        console.println("Welcome to Trillium's Rock Paper Scissor Game!");
+        console.println("   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
+                            "     Welcome to the Trillium's Rock Paper Scissor Game!\n" +
+                            "   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
 
     public String getUserChoice() {
-        userChoice = console.getStringInput("Enter your choice: Rock  Paper  Scissor");
+        userChoice = console.getStringInput("\n     Enter your move: [R] for rock  [P] for paper  [S] for scissor");
+        while(true) {
+            if (!(userChoice.equalsIgnoreCase("R") || userChoice.equalsIgnoreCase("S") || userChoice.equalsIgnoreCase("P"))) {
+                console.println(userChoice + " is not a valid move.");
+            }
+            break;
+        }
        return userChoice.toUpperCase();
     }
 
     public String getComputerChoice() {
-        Random random = new Random();
-        int number = random.nextInt(3);
-        computerChoice = choices[number];
+        computerChoice = choices[new Random().nextInt(choices.length)];
         return computerChoice;
+//        Random random = new Random();
+//        int number = random.nextInt(3);
+//        computerChoice = choices[number];
+//        return computerChoice;
     }
 
 
     public Boolean isWinner(String userChoice, String computerChoice) {
-        return (userChoice.equalsIgnoreCase("ROCK") && computerChoice.equals("SCISSOR")) ||
-                (userChoice.equalsIgnoreCase("PAPER") && computerChoice.equals("ROCK")) ||
-                (userChoice.equalsIgnoreCase("SCISSOR") && computerChoice.equals("PAPER"));
+        return (userChoice.equalsIgnoreCase("R") && computerChoice.equalsIgnoreCase("S")) ||
+                (userChoice.equalsIgnoreCase("P") && computerChoice.equalsIgnoreCase("R")) ||
+                (userChoice.equalsIgnoreCase("S") && computerChoice.equalsIgnoreCase("P"));
 
     }
 
     public void displayResults(String userChoice, String computerChoice) {
-        if (userChoice.equals(computerChoice)) {
-            console.println("It's a tie!");
+        if (userChoice.equalsIgnoreCase(computerChoice)) {
+            console.println("\n     It's a tie!\n");
         } else if (isWinner(userChoice, computerChoice)) {
-            console.println("You won!");
+            console.println("\n     You won!\n");
         } else {
-            console.println("You lost...");
-            player.getAccount().withdrawBalance(50);
+            console.println("\n     You lost...\n");
+//            player.getAccount().withdrawBalance(50);
         }
-        console.println("You chose: " + userChoice + " and we chose: " + computerChoice);
+        console.println("     Your move: " + userChoice.toUpperCase() +
+                                    "\n     Our move: " + computerChoice);
     }
 
     public String playAgain() {
-        playAgain = console.getStringInput("Would you like to play again? Enter \"yes\" or \"no\".");
+        playAgain = console.getStringInput("\n     Would you like to play again? Enter [YES] or [NO]");
         return playAgain;
     }
 

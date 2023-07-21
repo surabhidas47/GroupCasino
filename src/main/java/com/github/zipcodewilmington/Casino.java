@@ -35,16 +35,16 @@ public class Casino {
             switch (arcadeDashBoardInput) {
 
                 case "CREATE ACCOUNT":
-                    console.println("Create an account here! ");
-                    String userName = console.getStringInput("Enter your account username: ");
+                    console.println("\n   Create an account here! \n");
+                    String userName = console.getStringInput("\nEnter your account username: ");
                     String userPassword = console.getStringInput("Enter your account password: ");
                     Integer userBalance = console.getIntegerInput("Enter the dollar amount of money you would like to add to your account: ");
                     if (casinoAccountManager.getAccountUsername().contains(userName)) {
-                        System.out.println("This username already exists");
+                        System.out.println("\n   This username already exists\n");
                     } else {
                         casinoAccountManager.createAccount(userName, userPassword, userBalance);
                         casinoAccountManager.updateAccounts();
-                        System.out.println("Account successfully created");
+                        System.out.println("\n   Account successfully created\n");
                     }
                     break;
 
@@ -58,8 +58,8 @@ public class Casino {
                             // log in user account
                             CasinoAccount userAccount = promptLogin(casinoAccountManager);
                             if(userAccount == null) {
-                                console.println("No account found with that username and password. " +
-                                        "Redirecting to the main menu.");
+                                console.println("\n   No account found with that username and password. " +
+                                        "Redirecting to the main menu.\n");
                                 break;
                             }
 
@@ -87,26 +87,27 @@ public class Casino {
 
     private String getArcadeDashboardInput() {
         return console.getStringInput(
-                "Select an option: \n" +
-                        "[CREATE ACCOUNT]  [SELECT GAME]  [EXIT] \n" +
-                        ">> ");
+                "\n           Select an option: \n" +
+                        "[CREATE ACCOUNT]  [SELECT GAME]  [EXIT] ");
     }
 
     private String getGameSelectionInput() {
         return console.getStringInput(
-                "Select any of the following games: \n" +
-                        "[SLOTS] [ROULETTE] [COIN FLIP] [NUMBER GUESS] [21] [ROCK PAPER SCISSOR] \n" +
-                        ">> ");
+                "\n\n               Select any of the following games: \n" +
+                        "[SLOTS] [ROULETTE] [COIN FLIP] [NUMBER GUESS] [ROCK PAPER SCISSOR] ");
+
     }
 
     private CasinoAccount promptLogin(CasinoAccountManager cam) {
-        String userName = console.getStringInput("Enter your username: ");
+        String userName = console.getStringInput("\nEnter your username: ");
         String password = console.getStringInput("Enter your password: ");
         return cam.getAccount(userName, password);
     }
 
     private void welcome() {
-        console.println("Welcome to the Trillium Casino! \n\n");
+        console.println("   +++++++++++++++++++++++++++++++++++\n" +
+                            "     Welcome to the Trillium Casino!\n" +
+                            "   +++++++++++++++++++++++++++++++++++\n");
     }
 
 
