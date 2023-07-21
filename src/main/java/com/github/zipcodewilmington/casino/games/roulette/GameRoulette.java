@@ -17,7 +17,7 @@ public class GameRoulette implements GameInterface {
 //    }
     Scanner console = new Scanner(System.in);
     Random rand = new Random();
-
+    PlayerRoulette player;
     int bank = 100;
 //    int max = bank;
 //    int spins = 0;
@@ -59,7 +59,7 @@ public class GameRoulette implements GameInterface {
 //                    spin == 31 || spin == 33 || spin == 35 || spin == 37) {
                 System.out.println("You win!");
                 System.out.println("the spin was " + spin);
-                bank = bank + bet;
+                bank += bet;
                 System.out.println("You now have $" + bank + " in your bank.");
             } else {
                 System.out.println("You lose!");
@@ -114,7 +114,7 @@ public class GameRoulette implements GameInterface {
                 "The maximum amount you can bet is $" + bank + ".\n" +
                 " How much would you like to bet?");
         int bet = console.nextInt();
-        if (bet > bank) {
+        if (bet > player.getAccount().getBalance()) {
             System.out.println("You cannot bet more than $" + bank + ".");
             System.out.println("How much would you like to bet?");
             bet = console.nextInt();
