@@ -9,6 +9,7 @@ import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsGame;
 import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsPlayer;
 import com.github.zipcodewilmington.casino.games.roulette.GameRoulette;
+import com.github.zipcodewilmington.casino.games.roulette.PlayerRoulette;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
@@ -79,9 +80,11 @@ public class Casino {
                                 RpsPlayer player = new RpsPlayer(userAccount);
                                 new RpsGame(player).run();
                             } else if (gameSelectionInput.equals("NUMBER GUESS") || gameSelectionInput.equals("number guess") || gameSelectionInput.equals("4")) {
-                                new NumberGuessGame().run();
+//                                NumberGuessPlayer nplayer = new NumberGuessPlayer(userAccount);
+//                                new NumberGuessGame(nplayer).run();
                             } else if (gameSelectionInput.equals("SLOTS") || gameSelectionInput.equals("1") || gameSelectionInput.equals("slots")) {
-                                new SlotsGame().run();
+//                                SlotsPlayer splayer = new SlotsPlayer(userAccount);
+//                                new SlotsGame(splayer).run();
                             } else if (gameSelectionInput.equals("COIN TOSS") || gameSelectionInput.equals("coin toss") || gameSelectionInput.equals("3")) {
                                 new CoinTossGame().run();
                             } else {
