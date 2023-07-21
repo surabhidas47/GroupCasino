@@ -51,7 +51,7 @@ public class GameRoulette implements GameInterface {
     }
 
 
-    private void compareResults(int bet, int choice, int spin) {
+    public void compareResults(int bet, int choice, int spin) {
         if (choice == 1) {
             if (spin % 2 == 1) {
 //            if (spin == 1 || spin == 3 || spin == 5 || spin == 7 || spin == 9 || spin == 11 || spin == 13 || spin == 15 ||
@@ -90,7 +90,7 @@ public class GameRoulette implements GameInterface {
         return spin;
     }
 
-    private int getChoice(String x, String x1, String x2) {
+     int getChoice(String x, String x1, String x2) {
         System.out.println(x);
         System.out.println(x1);
         System.out.println(x2);

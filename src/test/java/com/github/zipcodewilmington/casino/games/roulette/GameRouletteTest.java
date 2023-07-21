@@ -28,14 +28,21 @@ class GameRouletteTest {
         assertTrue(actual >= 0 && actual <= 37);
     }
 
-//    @Test
-//    void testGetBet() {
-////        Given
-//        GameRoulette game = new GameRoulette();
-////      When
-//        int actual = game.getBet();
-////        Then
-//        assertTrue(actual >= 0 && actual <= 100);
-//    }
+    @Test
+    void testCompareResults() {
+//        Given
+        GameRoulette game = new GameRoulette();
+        int bet = 10;
+        int choice = 1;
+        int spin = 1;
+        int expected = 110;
+//        When
+        game.compareResults(bet, choice, spin);
+        int actual = game.bank;
+//        Then
+        assertEquals(expected, actual);
+
+    }
+
 
 }
