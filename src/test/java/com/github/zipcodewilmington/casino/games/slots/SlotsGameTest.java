@@ -20,9 +20,9 @@ public class SlotsGameTest {
     }
 
     @Test
-    public void testPrintResultTrue() {
+    public void testPrintResultTrue1() {
         // Mock input for wordList with a match
-        String[] wordList = {"word", "word", "word"};
+        String[] wordList = {"*STAR*", "*STAR*", "*STAR*"};
         SlotsGame sg = new SlotsGame();
 
         // Call the method and capture the result
@@ -34,7 +34,21 @@ public class SlotsGameTest {
     }
 
     @Test
-    public void testPrintResultFalse() {
+    public void testPrintResultTrue2() {
+        // Mock input for wordList with a match
+        String[] wordList = {"*PRAY*", "*PRAY*", "*PRAY*"};
+        SlotsGame sg = new SlotsGame();
+
+        // Call the method and capture the result
+        boolean result = sg.checkMatch(wordList);
+
+        // Assert the expected result with the actual result
+        Assert.assertTrue(result);
+
+    }
+
+    @Test
+    public void testPrintResultFalse1() {
         // Mock input for wordList with a match
         String[] wordList = {"word", "bloop", "word"};
         SlotsGame sg = new SlotsGame();
@@ -47,6 +61,22 @@ public class SlotsGameTest {
 
 
     }
+
+    @Test
+    public void testPrintResultFalse2() {
+        // Mock input for wordList with a match
+        String[] wordList = {"word", "bloop", "bloop"};
+        SlotsGame sg = new SlotsGame();
+
+        // Call the method and capture the result
+        boolean result = sg.checkMatch(wordList);
+
+        // Assert the expected result with the actual result
+        Assert.assertFalse(result);
+
+
+    }
+
 
 
 
