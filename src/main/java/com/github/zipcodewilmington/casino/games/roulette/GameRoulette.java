@@ -1,14 +1,16 @@
 package com.github.zipcodewilmington.casino.games.roulette;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.Player;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class GameRoulette {
+public class GameRoulette implements GameInterface {
     //    public static void main(String[] args) {
 //        GameRoulette game = new GameRoulette();
 //        game.run();
@@ -27,6 +29,11 @@ public class GameRoulette {
         int spin = getSpin();
         compareResults(bet, choice, spin);
 //        spins++;
+        try {
+            broke();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         quit();
     }
 
@@ -115,7 +122,7 @@ public class GameRoulette {
         return bet;
     }
 
-    private void quit() {
+    public void quit() {
         System.out.println("Thank you for playing! Press 1 to replay or 2 to return to the casino lobby.");
 
         int choice = console.nextInt();
@@ -126,12 +133,12 @@ public class GameRoulette {
             //casino.run();
         }
     }
-    public void broke(){
+    public void broke() throws IOException {
         if (bank <= 0){
             System.out.println("You are out of money. Please return to the casino lobby.");
 
-            //Casino casino = new Casino();
-            //casino.run();
+            Casino casino = new Casino();
+            casino.run();
         }
     }
 }
