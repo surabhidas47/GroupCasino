@@ -2,9 +2,10 @@ package com.github.zipcodewilmington.casino;
 
 public abstract class Player {
 
+
     protected CasinoAccount account;
 
-    public Player(CasinoAccount account) {
+    public Player() {
         this.account = account;
     }
 
