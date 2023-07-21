@@ -1,2 +1,6 @@
+banana pie 400
+pebbles password 1000
 angela apple 100
-bob pw 2000
+bob pw 1800
+poobers pebs 300
+anna pie 40
