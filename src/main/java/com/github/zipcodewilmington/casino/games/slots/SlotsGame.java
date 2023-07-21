@@ -20,8 +20,13 @@ import static com.github.zipcodewilmington.casino.games.slots.SlotsPlayer.prompt
 public class SlotsGame implements GameInterface {
 
     String[] wordList = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
-    SlotsPlayer sp = new SlotsPlayer();
+    SlotsPlayer sp; //instance of player
+    private final IOConsole console = new IOConsole(AnsiColor.CYAN);
+    int bet;
 
+    public SlotsGame(SlotsPlayer splayer) {
+        sp = splayer;
+    }
 
 //    just temp to check if code works
 
@@ -34,6 +39,7 @@ public class SlotsGame implements GameInterface {
 
 
         displayInstructions();
+        placeBet();
 
         do {
             promptUserToStart();
@@ -72,6 +78,9 @@ public class SlotsGame implements GameInterface {
             System.out.print(">>>   ");
         }
 
+        public int placeBet() {
+            return bet = console.getIntegerInput("Place your bet: ");
+        }
 
         public String[] spin () {
             Random random = new Random();
@@ -86,9 +95,15 @@ public class SlotsGame implements GameInterface {
         public void printResult (String[]wordList){
             System.out.println(wordList[0] + " " + wordList[1] + " " + wordList[2]);
             if (checkMatch(wordList)) {
-                System.out.println("Congratulations! You have a match!\n");
+                System.out.println("Congratulations! You have a match! You have doubled your bet!\n");
+                sp.getPlayerAccount().addBalance(bet*2);
+                sp.getPlayerAccount().setBalance(sp.getPlayerAccount().getBalance());
+                System.out.println("Your balance now is: " + sp.getPlayerAccount().getBalance() + "\n");
             } else {
-                System.out.println("Better luck next time. No match.\n");
+                System.out.println("Better luck next time. No match. You lost your bet!\n");
+                sp.getPlayerAccount().withdrawBalance(bet);
+                sp.getPlayerAccount().setBalance(sp.getPlayerAccount().getBalance());
+                System.out.println("Your balance now is: " + sp.getPlayerAccount().getBalance() + "\n");
             }
         }
 
