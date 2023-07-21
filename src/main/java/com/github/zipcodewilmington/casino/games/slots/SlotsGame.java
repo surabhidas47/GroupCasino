@@ -63,7 +63,7 @@ public class SlotsGame {
         System.out.println("      ***************************************\n");
         System.out.println("You get three tries! If you win you double your bet!!\n");
         System.out.println("         Type 'PULL' to crank the lever!\n ");
-        //thurs night after angela changes
+
         System.out.print("         >>>   ");
 
 
@@ -82,7 +82,7 @@ public class SlotsGame {
 
 
     public static void printResult(String[] wordList) {
-        //thurs night after angela changes
+
         System.out.println(wordList[0] + "     " + wordList[1] + "     " + wordList[2]);
 
 
