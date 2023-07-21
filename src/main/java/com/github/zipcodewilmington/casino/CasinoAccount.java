@@ -7,8 +7,8 @@ package com.github.zipcodewilmington.casino;
  */
 public class CasinoAccount implements Account{
 
-    private String userName;
-    private String password;
+    private final String userName;
+    private final String password;
     private int balance;
 
     public CasinoAccount(String userName, String password, int balance) {
@@ -17,11 +17,11 @@ public class CasinoAccount implements Account{
         this.balance = balance;
     }
 
-    public String getUserName() {
+    public final String getUserName() {
         return userName;
     }
 
-    public String getPassword() {
+    public final String getPassword() {
         return password;
     }
 

@@ -1,8 +1,8 @@
 banana pie 400
-joe joe 5000
+joe joe 5200
 pebbles password 1000
 angela apple 100
-bob pw 1800
+bob pw 2200
 test test 1000
 poobers pebs 300
 anna pie 40

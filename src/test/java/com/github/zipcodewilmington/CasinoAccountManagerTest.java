@@ -10,6 +10,7 @@ import java.io.IOException;
 public class CasinoAccountManagerTest {
 
     CasinoAccount account = new CasinoAccount("Angela", "password", 1000);
+    CasinoAccount account1 = new CasinoAccount("Bob", "pw", 2000);
 
     @Test
     public void testGetAccount() throws IOException {

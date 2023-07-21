@@ -13,6 +13,7 @@ public class RpsGame implements GameInterface {
     RpsPlayer player;
     String userChoice;
     String computerChoice;
+    int bet;
     String playAgain;
     String[] choices = {"R", "P", "S"};
 
@@ -26,6 +27,8 @@ public class RpsGame implements GameInterface {
     public void run() {
 
         displayInstructions();
+
+        placeBet();
 
         boolean play = true;
         while(play==true) {
@@ -51,11 +54,17 @@ public class RpsGame implements GameInterface {
     public void displayInstructions() {
         console.println("   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
                             "     Welcome to the Trillium's Rock Paper Scissor Game!\n" +
-                            "   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+                            "   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
+                            "\n\n\n" +
+                            "        Hi " + player.getAccount().getUserName() + ", your current balance is: $" + player.getAccount().getBalance());
+    }
+
+    public int placeBet() {
+        return bet = console.getIntegerInput("\n  Place your bet: ");
     }
 
     public String getUserChoice() {
-        userChoice = console.getStringInput("\n     Enter your move: [R] for rock  [P] for paper  [S] for scissor");
+        userChoice = console.getStringInput("\n  Enter your move: [R] for rock  [P] for paper  [S] for scissor");
         while(true) {
             if (!(userChoice.equalsIgnoreCase("R") || userChoice.equalsIgnoreCase("S") || userChoice.equalsIgnoreCase("P"))) {
                 console.println(userChoice + " is not a valid move.");
@@ -68,10 +77,6 @@ public class RpsGame implements GameInterface {
     public String getComputerChoice() {
         computerChoice = choices[new Random().nextInt(choices.length)];
         return computerChoice;
-//        Random random = new Random();
-//        int number = random.nextInt(3);
-//        computerChoice = choices[number];
-//        return computerChoice;
     }
 
 
@@ -84,14 +89,23 @@ public class RpsGame implements GameInterface {
 
     public void displayResults(String userChoice, String computerChoice) {
         if (userChoice.equalsIgnoreCase(computerChoice)) {
-            console.println("\n     It's a tie!\n");
+            console.println("\n     It's a tie!\n\n" +
+                            "     Your current balance is: " + player.getAccount().getBalance());
+
         } else if (isWinner(userChoice, computerChoice)) {
-            console.println("\n     You won!\n");
+            player.getPlayerAccount().addBalance(bet*2);
+            player.getPlayerAccount().setBalance(player.getAccount().getBalance());
+            console.println("\n     You won double your bet!\n\n" +
+                    "     Your current balance is: " + player.getAccount().getBalance());
+
         } else {
-            console.println("\n     You lost...\n");
-//            player.getAccount().withdrawBalance(50);
+            player.getPlayerAccount().withdrawBalance(bet);
+            player.getPlayerAccount().setBalance(player.getAccount().getBalance());
+            console.println("\n     You lost...\n\n" +
+                    "     Your current balance is: " + player.getAccount().getBalance());
+
         }
-        console.println("     Your move: " + userChoice.toUpperCase() +
+        console.println("\n     Your move: " + userChoice.toUpperCase() +
                                     "\n     Our move: " + computerChoice);
     }
 
