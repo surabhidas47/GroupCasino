@@ -8,7 +8,8 @@ public class NumberGuessGame {
         private Player player;
         private Scanner scanner;
         private int targetNumber;
-         private int numberOfTries;
+        private int numberOfTries;
+        private String playAgainChoice;
 
         public NumberGuessGame() {
             this.scanner = new Scanner(System.in);
@@ -42,9 +43,14 @@ public class NumberGuessGame {
 
                 }
 
-                playAgain = playAgain();
+                playAgain();
+                if(playAgainChoice.equalsIgnoreCase("yup")) {
+                    playAgain = true;
+                } else if(playAgainChoice.equalsIgnoreCase("nah")) {
+                    playAgain = false;
+                }
             }
-            quit();
+//            quit();
         }
 
         public String displayInstructions() {
@@ -67,10 +73,10 @@ public class NumberGuessGame {
             return false;
         }
 
-        public boolean playAgain() {
+        public String playAgain() {
             System.out.print("Play Again? (yup/nah): ");
-            String playAgainChoice = scanner.next().toLowerCase();
-            return playAgainChoice.equals("yup");
+            playAgainChoice = scanner.next().toLowerCase();
+            return playAgainChoice;
         }
 
         public void quit() {
@@ -78,12 +84,12 @@ public class NumberGuessGame {
             scanner.close();
         }
 
-        public static void main(String[] args) {
-            NumberGuessGame game = new NumberGuessGame();
-            Player player = new Player();
-            game.add(player);
-            game.run();
-        }
+//        public static void main(String[] args) {
+//            NumberGuessGame game = new NumberGuessGame();
+//            Player player = new Player();
+//            game.add(player);
+//            game.run();
+//        }
     }
 
     class Player {
