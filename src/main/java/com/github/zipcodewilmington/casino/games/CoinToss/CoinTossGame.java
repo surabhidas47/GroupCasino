@@ -7,15 +7,12 @@ public class CoinTossGame {
 
     int userFlip;
     int gameAns;
-    static int toss;
-    static int choice;
+    int toss;
+    int choice;
 
 
 
-    public static void main(String[] args) {
-        run();
-    }
-    public static void run (){
+    public  void run (){
         displayInstructions();
         int tossResult=theToss();
 
@@ -35,7 +32,7 @@ public class CoinTossGame {
 
     }
 
-    public static void displayInstructions(){
+    public  void displayInstructions(){
         System.out.println("      ***************************************");
         System.out.println("      ---------------------------------------");
         System.out.println("            (H) Lets play coin toss (T)  ");
@@ -47,24 +44,24 @@ public class CoinTossGame {
 
     }
 
-    public static int theToss(){
+    public int theToss(){
         Random random = new Random();
         int toss= random.nextInt(2);
     return toss;
     }
 
-    public static int getChoice(){
+    public  int getChoice(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("     Enter your Guess: 0 for Heads, 1 for Tails");
         int choice = scanner.nextInt();
         return choice;
 
     }
-    public static void displayTossResult(int result) {
+    public  void displayTossResult(int result) {
         System.out.println("The coin toss result: " + (result == 0 ? "Heads" : "Tails"));
     }
 
-    public static void match(int toss, int choice) {
+    public  void match(int toss, int choice) {
         if (toss == choice) {
             System.out.println("Congratulations! You guessed it right!");
         } else {
@@ -72,12 +69,12 @@ public class CoinTossGame {
         }
     }
 
-    public static void updateAccount(){
+    public  void updateAccount(){
         System.out.println("BLOOOP.\n");
 
     }
 
-    public static void quit() {
+    public  void quit() {
 
         System.out.println("Thank you for playing! Press 1 to replay or 2 to return to the casino lobby.");
         Scanner console = new Scanner(System.in);

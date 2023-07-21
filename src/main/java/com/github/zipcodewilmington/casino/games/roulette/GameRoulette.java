@@ -122,6 +122,26 @@ public class GameRoulette implements GameInterface {
         return bet;
     }
 
+    @Override
+    public void add(Player player) {
+
+    }
+
+    @Override
+    public void remove(Player player) {
+
+    }
+
+    @Override
+    public void displayInstructions() {
+
+    }
+
+    @Override
+    public Boolean checkWinner() {
+        return null;
+    }
+
     public void quit() {
         System.out.println("Thank you for playing! Press 1 to replay or 2 to return to the casino lobby.");
 

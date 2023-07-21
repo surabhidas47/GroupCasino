@@ -19,8 +19,8 @@ public class RPSTest {
         CasinoAccount account = new CasinoAccount("Angela", "pw", 500);
         RpsPlayer player = new RpsPlayer(account);
         RpsGame game = new RpsGame(player);
-        String user = "ROCK";
-        String computer = "SCISSOR";
+        String user = "R";
+        String computer = "S";
         boolean winner = game.isWinner(user, computer);
 
         Assert.assertTrue(winner);
@@ -31,8 +31,8 @@ public class RPSTest {
         CasinoAccount account = new CasinoAccount("Angela", "pw", 500);
         RpsPlayer player = new RpsPlayer(account);
         RpsGame game = new RpsGame(player);
-        String user = "ROCK";
-        String computer = "PAPER";
+        String user = "R";
+        String computer = "P";
         boolean winner = game.isWinner(user, computer);
 
         Assert.assertFalse(winner);

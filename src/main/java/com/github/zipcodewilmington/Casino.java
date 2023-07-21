@@ -3,6 +3,7 @@ package com.github.zipcodewilmington;
 import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 
+import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsGame;
@@ -49,40 +50,54 @@ public class Casino {
                     break;
 
                 case "SELECT GAME":
-                    String gameSelectionInput = getGameSelectionInput().toUpperCase();
+                    String gameSelectionInput = getGameSelectionInput();
                     switch (gameSelectionInput) {
                         case "ROCK PAPER SCISSOR":
+                        case "rock paper scissor":
+                        case "5":
                         case "NUMBER GUESS":
+                        case "number guess":
+                        case "4":
                         case "SLOTS":
+                        case "slots":
+                        case "1":
                         case "ROULETTE":
+                        case "roulette":
+                        case "2":
+                        case "COIN TOSS":
+                        case "coin toss":
+                        case "3":
                             // log in user account
                             CasinoAccount userAccount = promptLogin(casinoAccountManager);
-                            if(userAccount == null) {
+                            if (userAccount == null) {
                                 console.println("\n   No account found with that username and password. " +
                                         "Redirecting to the main menu.\n");
                                 break;
                             }
 
-                            if (gameSelectionInput.equals("ROCK PAPER SCISSOR")) {
+                            if (gameSelectionInput.equals("ROCK PAPER SCISSOR") || gameSelectionInput.equals("rock paper scissor") || gameSelectionInput.equals("5")) {
                                 RpsPlayer player = new RpsPlayer(userAccount);
                                 new RpsGame(player).run();
-                            } else if(gameSelectionInput.equals("NUMBER GUESS")){
+                            } else if (gameSelectionInput.equals("NUMBER GUESS") || gameSelectionInput.equals("number guess") || gameSelectionInput.equals("4")) {
                                 new NumberGuessGame().run();
-                            } else if (gameSelectionInput.equals("SLOTS")) {
+                            } else if (gameSelectionInput.equals("SLOTS") || gameSelectionInput.equals("1") || gameSelectionInput.equals("slots")) {
                                 new SlotsGame().run();
+                            } else if (gameSelectionInput.equals("COIN TOSS") || gameSelectionInput.equals("coin toss") || gameSelectionInput.equals("3")) {
+                                new CoinTossGame().run();
                             } else {
                                 new GameRoulette().run();
                             }
-
                             casinoAccountManager.updateAccounts();
                             break;
 
 
-                    }
+                            }
 
+                    }
             }
-        } while (!"EXIT".equalsIgnoreCase(arcadeDashBoardInput));
-    }
+            while (!"EXIT".equalsIgnoreCase(arcadeDashBoardInput)) ;
+        }
+
 
 
     private String getArcadeDashboardInput() {
@@ -94,7 +109,7 @@ public class Casino {
     private String getGameSelectionInput() {
         return console.getStringInput(
                 "\n\n               Select any of the following games: \n" +
-                        "[SLOTS] [ROULETTE] [COIN FLIP] [NUMBER GUESS] [ROCK PAPER SCISSOR] ");
+                        "[1]SLOTS [2]ROULETTE [3]COIN TOSS [4]NUMBER GUESS [5]ROCK PAPER SCISSOR ");
 
     }
 
