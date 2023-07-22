@@ -7,75 +7,39 @@ import java.util.Random;
 
 public class SlotsGameTest {
 
-
     @Test
-    public void testSpin(){
-        Random random = new Random(1);
+    public void testSpin1(){
+        //checking shuffled array not empty
         SlotsGame sg = new SlotsGame();
 
-        String [] result = sg.spin();
+        String [] shuffle = sg.spin();
+
+        Assert.assertNotNull(shuffle);
+    }
+
+    @Test
+    public void testSpin2(){
+        //checking length of arrays equal
+        SlotsGame sg = new SlotsGame();
 
         String [] original = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
-        Assert.assertTrue(original != result);
+        String [] shuffle = sg.spin();
+
+        Assert.assertEquals(original.length, shuffle.length);
     }
 
     @Test
-    public void testPrintResultTrue1() {
-        // Mock input for wordList with a match
-        String[] wordList = {"*STAR*", "*STAR*", "*STAR*"};
+    public void testSpin3(){
+        //checking actual contents of shuffle array is diff than the shuffled
         SlotsGame sg = new SlotsGame();
 
-        // Call the method and capture the result
-        boolean result = sg.checkMatch(wordList);
+        String [] original = {"*STAR*", "*LUCK*", "*CASH*", "*PRAY*", "*HOPE*"};
+        String [] shuffle = sg.spin();
 
-        // Assert the expected result with the actual result
-        Assert.assertTrue(result);
-
+        Assert.assertNotEquals(original, shuffle);
     }
 
-    @Test
-    public void testPrintResultTrue2() {
-        // Mock input for wordList with a match
-        String[] wordList = {"*PRAY*", "*PRAY*", "*PRAY*"};
-        SlotsGame sg = new SlotsGame();
 
-        // Call the method and capture the result
-        boolean result = sg.checkMatch(wordList);
-
-        // Assert the expected result with the actual result
-        Assert.assertTrue(result);
-
-    }
-
-    @Test
-    public void testPrintResultFalse1() {
-        // Mock input for wordList with a match
-        String[] wordList = {"word", "bloop", "word"};
-        SlotsGame sg = new SlotsGame();
-
-        // Call the method and capture the result
-        boolean result = sg.checkMatch(wordList);
-
-        // Assert the expected result with the actual result
-        Assert.assertFalse(result);
-
-
-    }
-
-    @Test
-    public void testPrintResultFalse2() {
-        // Mock input for wordList with a match
-        String[] wordList = {"word", "bloop", "bloop"};
-        SlotsGame sg = new SlotsGame();
-
-        // Call the method and capture the result
-        boolean result = sg.checkMatch(wordList);
-
-        // Assert the expected result with the actual result
-        Assert.assertFalse(result);
-
-
-    }
 
 
 

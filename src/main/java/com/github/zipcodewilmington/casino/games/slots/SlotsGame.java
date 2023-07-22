@@ -28,43 +28,18 @@ public class SlotsGame implements GameInterface {
         sp = splayer;
     }
 
-//    just temp to check if code works
-
-
+    public SlotsGame() {
+    }
 
 
     public void run() {
-        int numberOfTries = 0;
-        boolean hasMatch = false;
+
 
 
         displayInstructions();
         placeBet();
 
-        do {
-            promptUserToStart();
-            String[] wordList = spin();
-            printResult(wordList);
-            numberOfTries++;
 
-            if (checkMatch(wordList)) {
-                hasMatch = true;
-                break;
-            }
-
-            if (numberOfTries < 3) {
-                System.out.println("Press Enter to spin again!");
-            }
-
-
-        }
-        while (numberOfTries < 3);
-
-        if (hasMatch) {
-            updateAccount();
-        } else {
-            quit();
-        }
     }
 
         @Override
