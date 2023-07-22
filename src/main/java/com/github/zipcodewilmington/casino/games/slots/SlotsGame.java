@@ -31,14 +31,11 @@ public class SlotsGame implements GameInterface {
     public SlotsGame() {
     }
 
-
     public void run() {
-
-
 
         displayInstructions();
         placeBet();
-
+        winOrLose();
 
     }
 
@@ -49,7 +46,6 @@ public class SlotsGame implements GameInterface {
             System.out.println(" { Welcome to the Slot Machine Game!!! } ");
             System.out.println(" ---------------------------------------");
             System.out.println(" ***************************************\n");
-            System.out.println("     Type 'PULL' to crank the lever!\n ");
             System.out.print(">>>   ");
         }
 
@@ -66,27 +62,53 @@ public class SlotsGame implements GameInterface {
             return wordList;
         }
 
-
-        public void printResult (String[]wordList){
-            System.out.println(wordList[0] + " " + wordList[1] + " " + wordList[2]);
-            if (checkMatch(wordList)) {
-                System.out.println("Congratulations! You have a match! You have doubled your bet!\n");
-                sp.getPlayerAccount().addBalance(bet*2);
-                sp.getPlayerAccount().setBalance(sp.getPlayerAccount().getBalance());
-                System.out.println("Your balance now is: " + sp.getPlayerAccount().getBalance() + "\n");
-            } else {
-                System.out.println("Better luck next time. No match. You lost your bet!\n");
-                sp.getPlayerAccount().withdrawBalance(bet);
-                sp.getPlayerAccount().setBalance(sp.getPlayerAccount().getBalance());
-                System.out.println("Your balance now is: " + sp.getPlayerAccount().getBalance() + "\n");
-            }
+        public void askUserToPullMsg () {
+            System.out.println("     Type 'PULL' to crank the lever!\n ");
         }
-
 
         public boolean checkMatch (String[]wordList){
 
-            return wordList[0].equals(wordList[1]) && wordList[0].equals(wordList[2]);
+            boolean indexCheck= wordList[0].equals(wordList[1]) && wordList[0].equals(wordList[2]);
+            return  indexCheck;
         }
+
+        public boolean winOrLose () {
+            int tries = 3;
+
+            while (tries > 0) {
+                askUserToPullMsg();
+                promptUserToStart();
+                spin();
+                System.out.println(wordList[0] + " " + wordList[1] + " " + wordList[2]);
+                System.out.println("\n");
+
+                if (checkMatch(wordList)) {
+                    System.out.println("Congratulations! You have a match! You have doubled your bet!\n");
+                    sp.getPlayerAccount().addBalance(bet * 2);
+                    sp.getPlayerAccount().setBalance(sp.getPlayerAccount().getBalance());
+                    System.out.println("Your balance now is: " + sp.getPlayerAccount().getBalance() + "\n");
+                    return true;
+
+                }
+
+                tries --;
+
+            }
+
+            noMatch();
+            return false;
+
+        }
+
+        public void noMatch() {
+            System.out.println("Better luck next time. No match. You lost your bet!\n");
+                sp.getPlayerAccount().withdrawBalance(bet);
+                sp.getPlayerAccount().setBalance(sp.getPlayerAccount().getBalance());
+                System.out.println("Your balance now is: " + sp.getPlayerAccount().getBalance() + "\n");
+
+        }
+
+
 
 
         public void updateAccount () {
