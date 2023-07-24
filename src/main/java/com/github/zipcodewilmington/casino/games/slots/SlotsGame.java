@@ -90,9 +90,7 @@ public class SlotsGame implements GameInterface {
                     return true;
 
                 }
-
                 tries --;
-
             }
 
             noMatch();
@@ -109,12 +107,6 @@ public class SlotsGame implements GameInterface {
         }
 
 
-
-
-        public void updateAccount () {
-            System.out.println("BLOOOP.\n");
-
-        }
 
         @Override
         public void quit () {

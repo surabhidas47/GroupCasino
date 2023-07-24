@@ -17,20 +17,28 @@ public class CoinTossTest {
 
 
 }
-//@Test
-//public void testTheTossSecific(){
-//    CoinTossGame ct = new CoinTossGame();
-//    int result = ct.theToss();
-//
-//     Assertions.assertTrue(result ==0||result ==1,"The res")
-//
-//
-//
-//
-//
-//}
-//
 
+    @Test
+    public void testTheToss2(){
+
+        CoinTossGame ct = new CoinTossGame();
+        int result = ct.theToss();
+
+        Assertions.assertFalse(result !=0||result ==1);
+
+
+    }
+
+    @Test
+    public void testTheToss3(){
+
+        CoinTossGame ct = new CoinTossGame();
+        int result = ct.theToss();
+
+        Assertions.assertTrue(result ==0||result !=1);
+
+
+    }
 
 
 
