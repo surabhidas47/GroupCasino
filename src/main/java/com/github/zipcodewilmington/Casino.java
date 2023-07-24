@@ -4,6 +4,7 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossGame;
+import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsGame;
@@ -81,9 +82,11 @@ public class Casino {
                             } else if (gameSelectionInput.equals("NUMBER GUESS") || gameSelectionInput.equals("number guess") || gameSelectionInput.equals("4")) {
                                 new NumberGuessGame().run();
                             } else if (gameSelectionInput.equals("SLOTS") || gameSelectionInput.equals("1") || gameSelectionInput.equals("slots")) {
-                                new SlotsGame().run();
+                                SlotsPlayer splayer = new SlotsPlayer(userAccount);
+                                new SlotsGame(splayer).run();
                             } else if (gameSelectionInput.equals("COIN TOSS") || gameSelectionInput.equals("coin toss") || gameSelectionInput.equals("3")) {
-                                new CoinTossGame().run();
+                                CoinTossPlayer cplayer = new CoinTossPlayer(userAccount);
+                                new CoinTossGame(cplayer).run();
                             } else {
                                 new GameRoulette().run();
                             }
