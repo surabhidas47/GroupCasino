@@ -4,12 +4,12 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossGame;
-import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsGame;
 import com.github.zipcodewilmington.casino.games.rockpaperscissors.RpsPlayer;
 import com.github.zipcodewilmington.casino.games.roulette.GameRoulette;
+import com.github.zipcodewilmington.casino.games.roulette.PlayerRoulette;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
@@ -80,13 +80,13 @@ public class Casino {
                                 RpsPlayer player = new RpsPlayer(userAccount);
                                 new RpsGame(player).run();
                             } else if (gameSelectionInput.equals("NUMBER GUESS") || gameSelectionInput.equals("number guess") || gameSelectionInput.equals("4")) {
+
                                 new NumberGuessGame().run();
                             } else if (gameSelectionInput.equals("SLOTS") || gameSelectionInput.equals("1") || gameSelectionInput.equals("slots")) {
                                 SlotsPlayer splayer = new SlotsPlayer(userAccount);
                                 new SlotsGame(splayer).run();
                             } else if (gameSelectionInput.equals("COIN TOSS") || gameSelectionInput.equals("coin toss") || gameSelectionInput.equals("3")) {
-                                CoinTossPlayer cplayer = new CoinTossPlayer(userAccount);
-                                new CoinTossGame(cplayer).run();
+                                new CoinTossGame().run();
                             } else {
                                 new GameRoulette().run();
                             }
@@ -123,10 +123,13 @@ public class Casino {
     }
 
     private void welcome() {
-        console.println("   +++++++++++++++++++++++++++++++++++\n" +
-                            "     Welcome to the Trillium Casino!\n" +
-                            "   +++++++++++++++++++++++++++++++++++\n");
+        console.println(" +++++++++++++++++++++++++++++++++++++++++\n" +
+                            "   +++++++++++++++++++++++++++++++++++++\n" +
+                            "      Welcome to the Trillium Casino!\n" +
+                            "   +++++++++++++++++++++++++++++++++++++\n" +
+                            " +++++++++++++++++++++++++++++++++++++++++\n");
     }
+
 
 
 }

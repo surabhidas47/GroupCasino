@@ -1,6 +1,8 @@
 package com.github.zipcodewilmington.casino;
 
 
+import com.github.zipcodewilmington.Casino;
+
 public abstract class Player {
 
 
@@ -11,7 +13,7 @@ public abstract class Player {
         this.account = account;
     }
 
-    public Account getAccount() { // return/access account with this method
+    public CasinoAccount getAccount() { // return/access account with this method
         return this.account;
     }
 
