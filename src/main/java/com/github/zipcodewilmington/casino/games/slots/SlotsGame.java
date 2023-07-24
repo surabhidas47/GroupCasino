@@ -47,6 +47,7 @@ public class SlotsGame implements GameInterface {
             System.out.println(" ---------------------------------------");
             System.out.println(" ***************************************\n");
             System.out.print(">>>   ");
+            System.out.println("  Hi " + sp.getPlayerAccount().getUserName() + ", your current balance is: $" + sp.getAccount().getBalance());
         }
 
         public int placeBet() {

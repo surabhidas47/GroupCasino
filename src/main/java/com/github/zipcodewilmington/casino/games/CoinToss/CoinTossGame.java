@@ -63,7 +63,9 @@ public class CoinTossGame implements GameInterface {
         System.out.println("            (H) Lets play coin toss (T)  ");
         System.out.println("      ---------------------------------------");
         System.out.println("      ***************************************\n");
-        System.out.println("You get three tries! If you win you double your bet!!\n");
+        System.out.println("If you win you double your bet!!\n");
+        System.out.println("Hi " + player.getPlayerAccount().getUserName() + ", your current balance is: $" + player.getAccount().getBalance());
+
 
 
 
@@ -109,21 +111,12 @@ public class CoinTossGame implements GameInterface {
     }
 
     public  void updateAccount(){
-        System.out.println("BLOOOP.\n");
+
 
     }
 
     public  void quit() {
 
-        System.out.println("Thank you for playing! Press 1 to replay or 2 to return to the casino lobby.");
-        Scanner console = new Scanner(System.in);
-        int choice = console.nextInt();
-        if (choice == 1) {
-            run();
-        } else if (choice == 2) {
-            //back to main menu when i comment out this classes main method
-
-        }
 
 
     }
