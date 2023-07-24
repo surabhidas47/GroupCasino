@@ -5,6 +5,7 @@ public abstract class Player {
 
 
     protected CasinoAccount account;
+
     public Player(CasinoAccount account) {
 
         this.account = account;
@@ -15,5 +16,6 @@ public abstract class Player {
     }
 
     public abstract CasinoAccount getPlayerAccount();
+
 
 }
