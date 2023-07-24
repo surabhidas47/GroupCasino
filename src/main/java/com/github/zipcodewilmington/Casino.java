@@ -80,11 +80,11 @@ public class Casino {
                                 RpsPlayer player = new RpsPlayer(userAccount);
                                 new RpsGame(player).run();
                             } else if (gameSelectionInput.equals("NUMBER GUESS") || gameSelectionInput.equals("number guess") || gameSelectionInput.equals("4")) {
-//                                NumberGuessPlayer nplayer = new NumberGuessPlayer(userAccount);
-//                                new NumberGuessGame(nplayer).run();
+
+                                new NumberGuessGame().run();
                             } else if (gameSelectionInput.equals("SLOTS") || gameSelectionInput.equals("1") || gameSelectionInput.equals("slots")) {
-//                                SlotsPlayer splayer = new SlotsPlayer(userAccount);
-//                                new SlotsGame(splayer).run();
+                                SlotsPlayer splayer = new SlotsPlayer(userAccount);
+                                new SlotsGame(splayer).run();
                             } else if (gameSelectionInput.equals("COIN TOSS") || gameSelectionInput.equals("coin toss") || gameSelectionInput.equals("3")) {
                                 new CoinTossGame().run();
                             } else {
