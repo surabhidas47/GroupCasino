@@ -22,6 +22,7 @@ public class RpsGame implements GameInterface {
     public RpsGame(RpsPlayer player) {
         this.player = player;
     }
+    //pass in player as the player of the game
 
     @Override
     public void run() {
@@ -53,11 +54,10 @@ public class RpsGame implements GameInterface {
     @Override
     public void displayInstructions() {
         console.println("   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
-                            "   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
                             "     Welcome to the Trillium's Rock Paper Scissor Game!\n" +
                             "   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
-                            "   ++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
-                            "\n\n\n" +
+                            "\n Choose between [R] Rock, [P] Paper, [S] Scissor and see if you win" +
+                            "\n\n" +
                             "        Hi " + player.getAccount().getUserName() + ", your current balance is: $" + player.getAccount().getBalance());
     }
 
