@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.roulette;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,6 +20,15 @@ class GameRouletteTest {
         assertEquals(expected, actual);
     }
     @Test
+    void play2(){
+    GameRoulette game = new GameRoulette();
+    int expected = 50;
+
+    int actual = game.bank;
+
+        Assert.assertNotEquals(expected,actual);
+    }
+    @Test
     void testGetSpin() {
 //        Given
         GameRoulette game = new GameRoulette();
@@ -26,6 +36,12 @@ class GameRouletteTest {
         int actual = game.getSpin();
 //        Then
         assertTrue(actual >= 0 && actual <= 37);
+    }
+    @Test
+    void testGetSpin2(){
+        GameRoulette game = new GameRoulette();
+        int actual = game.getSpin();
+        Assert.assertFalse(actual>38);
     }
 
     @Test
