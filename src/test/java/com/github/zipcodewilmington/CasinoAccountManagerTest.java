@@ -97,4 +97,37 @@ public class CasinoAccountManagerTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testSetBalance() throws IOException {
+        CasinoAccountManager cam = new CasinoAccountManager();
+        CasinoAccount account = cam.createAccount("Bob", "pw", 2000);
+        Integer expected = 2000;
+        account.setBalance(expected);
+        Integer actual = account.getBalance();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetBalance2() throws IOException {
+        CasinoAccountManager cam = new CasinoAccountManager();
+        CasinoAccount account = cam.createAccount("Bob", "pw", 800);
+        Integer expected = 800;
+        account.setBalance(expected);
+        Integer actual = account.getBalance();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetBalance3() throws IOException {
+        CasinoAccountManager cam = new CasinoAccountManager();
+        CasinoAccount account = cam.createAccount("Bob", "pw", 300);
+        Integer expected = 300;
+        account.setBalance(expected);
+        Integer actual = account.getBalance();
+
+        Assert.assertEquals(expected, actual);
+    }
+
 }
